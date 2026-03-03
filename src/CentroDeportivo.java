@@ -56,7 +56,7 @@ public class CentroDeportivo {
     /**
      * Metodo que registra a un entrenador, comprobando que no exista otro con el mismo id y que haya hueco.
      * @param entrenador
-     * @return Devuelve true si se añade. O devuelve true si se añade.
+     * @return Devuelve true si se añade. O false si se añade.
      */
     public boolean registrarEntrenador(Entrenador entrenador){
 
