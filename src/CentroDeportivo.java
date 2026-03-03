@@ -32,6 +32,16 @@ public class CentroDeportivo {
      */
     public Entrenador buscarEntrenador(int id){
 
+        boolean continuaBusqueda = true;
+        Entrenador entrenadorEncontrado = null;
+
+        for(int i = 0; i < NUM_MAX_ENTRENADORES && continuaBusqueda; i++){
+            if((entrenadores[i] != null) && entrenadores[i].getId() == id){
+                continuaBusqueda = false;
+                entrenadorEncontrado = entrenadores[i];
+            }
+        }
+        return entrenadorEncontrado;
     }
 
     /**
