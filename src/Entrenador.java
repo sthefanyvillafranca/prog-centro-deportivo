@@ -7,6 +7,8 @@
  * Esta clase actúa como entidad del dominio y encapsula sus datos,
  * permitiendo el acceso únicamente a través de métodos públicos.
  *
+ * @author Sthefany Villafranca S.
+ * @version 1.0
  *
  */
 
@@ -38,8 +40,25 @@ public class Entrenador {
         return anosExperiencia;
     }
 
+    /*study: String format y cuál es la letra correspondiente por cada tipo de dato. d, s, etc...*/
+
+    /**
+     *
+     * @return
+     */
     @Override
     public String toString() {
+        StringBuilder sb = new StringBuilder("Entrenador: (");
+        sb.append(String.format(" id: %d;", id));
+        sb.append(String.format(" nombre: %s;", nombre));
+        sb.append(String.format(" especialidad: %s;", especialidad));
+        sb.append(String.format(" años experiencia: %d;", anosExperiencia));
+        sb.append(")");
+
+        return sb.toString();
 
     }
 }
+/**
+ * todo estudiar como recorrer un array e imprimir sus elementos
+ */
