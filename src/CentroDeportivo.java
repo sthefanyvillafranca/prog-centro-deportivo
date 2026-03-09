@@ -13,17 +13,23 @@
  * @version 1.0
  */
 
+
 public class CentroDeportivo {
     private Entrenador[] entrenadores;
     private final int NUM_MAX_ENTRENADORES;
-    private final int NUM_MIN_ENTRENADORES;
 
-    public CentroDeportivo() {
-        this.NUM_MIN_ENTRENADORES = 0;
-        this.NUM_MAX_ENTRENADORES = NUM_MIN_ENTRENADORES + 15;
-        entrenadores = new Entrenador[NUM_MAX_ENTRENADORES];
+    /**
+     * Constructor de centro deportivo.
+     * @param capacidad Número máx. de entrenadores. Debe ser positivo.
+     */
+    public CentroDeportivo(int capacidad) {
+        if (capacidad <= 0) {
+            this.NUM_MAX_ENTRENADORES = 15;
+        } else {
+            this.NUM_MAX_ENTRENADORES = capacidad;
+        }
+        this.entrenadores = new Entrenador[this.NUM_MAX_ENTRENADORES];
     }
-
     /**
      * Metodo que busca un entrenador por su ID
      *
@@ -117,4 +123,21 @@ public class CentroDeportivo {
         return contador;
     }
 
+    public String imprimirArray(){
+        //todo: terminar esto
+        for (int i = 0; i < NUM_MAX_ENTRENADORES; i++) {
+            if (entrenadores[i] != null) {
+                System.out.println(entrenadores[i].getId());
+            } else {
+
+            }
+        }
+        return "";
+    }
+
+
 }
+
+/**
+ * study: metodos publicos y privados
+ */
