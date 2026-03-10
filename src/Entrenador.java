@@ -48,12 +48,12 @@ public class Entrenador {
      */
     @Override
     public String toString() {
-        StringBuilder sb = new StringBuilder("Entrenador: (");
-        sb.append(String.format(" id: %d;", id));
-        sb.append(String.format(" nombre: %s;", nombre));
-        sb.append(String.format(" especialidad: %s;", especialidad));
-        sb.append(String.format(" años experiencia: %d;", anosExperiencia));
-        sb.append(")");
+        StringBuilder sb = new StringBuilder("Entrenador: {");
+        sb.append(String.format(" id: %d |", id));
+        sb.append(String.format(" nombre: %s |", nombre));
+        sb.append(String.format(" especialidad: %s |", especialidad));
+        sb.append(String.format(" años experiencia: %d |", anosExperiencia));
+        sb.append(" }\n");
 
         return sb.toString();
 
