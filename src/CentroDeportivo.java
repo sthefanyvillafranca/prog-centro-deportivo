@@ -16,20 +16,22 @@
 
 public class CentroDeportivo {
     private Entrenador[] entrenadores;
-    private final int NUM_MAX_ENTRENADORES;
+    private final int MAX_ENTRENADORES;
 
     /**
      * Constructor de centro deportivo.
+     *
      * @param capacidad Número máx. de entrenadores. Debe ser positivo.
      */
     public CentroDeportivo(int capacidad) {
         if (capacidad <= 0) {
-            this.NUM_MAX_ENTRENADORES = 15;
+            this.MAX_ENTRENADORES = 15;
         } else {
-            this.NUM_MAX_ENTRENADORES = capacidad;
+            this.MAX_ENTRENADORES = capacidad;
         }
-        this.entrenadores = new Entrenador[this.NUM_MAX_ENTRENADORES];
+        this.entrenadores = new Entrenador[this.MAX_ENTRENADORES];
     }
+
     /**
      * Metodo que busca un entrenador por su ID
      *
@@ -41,7 +43,7 @@ public class CentroDeportivo {
         boolean continuaBusqueda = true;
         Entrenador entrenadorEncontrado = null;
 
-        for (int i = 0; i < NUM_MAX_ENTRENADORES && continuaBusqueda; i++) {
+        for (int i = 0; i < MAX_ENTRENADORES && continuaBusqueda; i++) {
             if ((entrenadores[i] != null) && entrenadores[i].getId() == id) {
                 continuaBusqueda = false;
                 entrenadorEncontrado = entrenadores[i];
@@ -59,7 +61,7 @@ public class CentroDeportivo {
         int posiciónLibre = -1;
         boolean continuaBusqueda = true;
 
-        for (int i = 0; i < NUM_MAX_ENTRENADORES && continuaBusqueda; i++) {
+        for (int i = 0; i < MAX_ENTRENADORES && continuaBusqueda; i++) {
             if (entrenadores[i] == null) {
                 continuaBusqueda = false;
                 posiciónLibre = i;
@@ -95,10 +97,10 @@ public class CentroDeportivo {
      * @return listado de entrenadores
      */
     /* study: String builder con bucles internos y como agregar algo de un array a un toString, entender sintaxis del código y practicarlo
-    *  lo que entiendo es que necesita el bucle para poder recorrerlo y solo mostrar los entrenadores que existen. Con la posibilidad de que haya huecos vacíos (nulos) entonces con una condición se evitan esos espacios nulos y solo se toma en cuenta al toString los entrenadores existentes. */
+     *  lo que entiendo es que necesita el bucle para poder recorrerlo y solo mostrar los entrenadores que existen. Con la posibilidad de que haya huecos vacíos (nulos) entonces con una condición se evitan esos espacios nulos y solo se toma en cuenta al toString los entrenadores existentes. */
     public String mostrarEntrenadores() {
         StringBuilder sb = new StringBuilder("\n Lista de entrenadores { \n");
-        for (int i = 0; i < NUM_MAX_ENTRENADORES; i++) {
+        for (int i = 0; i < MAX_ENTRENADORES; i++) {
             if (entrenadores[i] != null) {
                 sb.append(entrenadores[i].toString());
             }
@@ -115,7 +117,7 @@ public class CentroDeportivo {
     public int contarEntrenadores() {
 
         int contador = 0;
-        for (int i = 0; i < NUM_MAX_ENTRENADORES; i++) {
+        for (int i = 0; i < MAX_ENTRENADORES; i++) {
             if (entrenadores[i] != null) {
                 contador++;
             }
@@ -123,18 +125,47 @@ public class CentroDeportivo {
         return contador;
     }
 
-    public String imprimirArray(){
-        //todo: terminar esto
-        for (int i = 0; i < NUM_MAX_ENTRENADORES; i++) {
-            if (entrenadores[i] != null) {
-                System.out.println(entrenadores[i].getId());
-            } else {
+    /**
+     * Elimina un entrenador a partir de su ID.
+     *
+     * @param id Identificador del entrenador a eliminar.
+     * @return El entrenador eliminado, o null si no se encontró.
+     */
+    public Entrenador deleteEntrenador(int id) {
+        Entrenador entrenadorEliminado = null;
+        boolean sigueBusqueda = true;
 
+        for (int i = 0; i < MAX_ENTRENADORES && sigueBusqueda; i++) {
+            if (entrenadores[i] != null && entrenadores[i].getId() == id) {
+                entrenadorEliminado = entrenadores[i];
+                entrenadores[i] = null;
+                sigueBusqueda = false;
             }
         }
-        return "";
+        return entrenadorEliminado;
     }
 
+    /**
+     * Elimina un entrenador a partir de un Entrenador.
+     * @param entrenador  entrenador a eliminar.
+     * @return El entrenador eliminado, o null si no se pudo eliminar.
+     */
+    public Entrenador deleteEntrenador(Entrenador entrenador) {
+        Entrenador entrenadorEliminado = null;
+
+        if (entrenador != null) {
+            entrenadorEliminado = deleteEntrenador(entrenador.getId());
+        }
+
+        return entrenadorEliminado;
+    }
+
+
+/*
+    public void ordenarEntrenadores() {
+       // study: no sé como hacer este
+    }
+     */
 
 }
 
