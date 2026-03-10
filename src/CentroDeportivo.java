@@ -99,7 +99,7 @@ public class CentroDeportivo {
     /* study: String builder con bucles internos y como agregar algo de un array a un toString, entender sintaxis del código y practicarlo
      *  lo que entiendo es que necesita el bucle para poder recorrerlo y solo mostrar los entrenadores que existen. Con la posibilidad de que haya huecos vacíos (nulos) entonces con una condición se evitan esos espacios nulos y solo se toma en cuenta al toString los entrenadores existentes. */
     public String mostrarEntrenadores() {
-        StringBuilder sb = new StringBuilder("\n Lista de entrenadores { \n");
+        StringBuilder sb = new StringBuilder("\n Lista de entrenadores: \n");
         for (int i = 0; i < MAX_ENTRENADORES; i++) {
             if (entrenadores[i] != null) {
                 sb.append(entrenadores[i].toString());
